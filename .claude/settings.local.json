@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(arch -x86_64 make install)",
+      "WebFetch(domain:gist.github.com)",
+      "WebFetch(domain:gist.githubusercontent.com)",
+      "Bash(otool -l ~/wine-custom/lib/wine/x86_64-unix/winemac.so)",
+      "Bash(grep -n \"extension_registry\\\\|struct registry_entry\" /Users/sagar/Documents/wine/dlls/opengl32/*.c /Users/sagar/Documents/wine/dlls/opengl32/*.h)",
+      "Bash(grep -r EGL_PLATFORM_SURFACELESS --include=*.c --include=*.h)",
+      "Bash(gh gist:*)",
+      "Bash(DYLD_LIBRARY_PATH=~/mesa-native/lib arch -x86_64 ~/mesa-native/lib/libEGL.dylib)",
+      "Bash(otool -L /opt/wine-gl46/bin/wine)",
+      "Bash(otool -L /opt/wine-gl46/lib/wine/x86_64-unix/*.so)",
+      "Bash(xargs otool:*)",
+      "Bash(find /opt/wine-gl46 -type f \\\\\\(-name *.so -o -name *.dylib -o -perm +111 \\\\\\))",
+      "Bash(xargs file:*)",
+      "Bash(find /opt/wine-gl46/lib/wine/x86_64-unix -name *.so)",
+      "Bash(for f:*)",
+      "Bash(do otool:*)",
+      "Bash(echo \"$f\")",
+      "Bash(done)",
+      "Bash(otool:*)",
+      "Bash(git log:*)"
+    ]
+  }
+}
