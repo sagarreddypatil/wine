@@ -1,0 +1,16 @@
+CompileFlags:
+    Add:
+        - -D__WINESRC__
+        - -D_REENTRANT
+        - -Iinclude
+        - -fno-strict-aliasing
+        - -fshort-wchar
+        - -Wno-pragma-pack
+        - -Wno-invalid-source-encoding
+    Remove:
+        - -W*
+Diagnostics:
+    Suppress:
+        - pp_file_not_found # generated headers like config.h won't exist
+    UnusedIncludes: None
+    MissingIncludes: None
