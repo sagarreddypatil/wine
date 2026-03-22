@@ -49,6 +49,52 @@ static EGLConfig egl_config_for_format(int format)
     return egl->configs[(format - 1) % egl->config_count];
 }
 
+/* Find an EGL config with EGL_WINDOW_BIT for the given format. The format's
+ * default config may be pbuffer-only (10-bit configs lack window support in
+ * mesa's surfaceless platform). We find the best window-capable match. */
+static EGLConfig find_window_config(int format)
+{
+    EGLConfig config = egl_config_for_format(format);
+    EGLConfig best = 0;
+    EGLint surface_type, depth, stencil, best_score = -1;
+
+    funcs->p_eglGetConfigAttrib(egl->display, config, EGL_SURFACE_TYPE, &surface_type);
+    if (surface_type & EGL_WINDOW_BIT) return config;
+
+    funcs->p_eglGetConfigAttrib(egl->display, config, EGL_DEPTH_SIZE, &depth);
+    funcs->p_eglGetConfigAttrib(egl->display, config, EGL_STENCIL_SIZE, &stencil);
+
+    for (int i = 0; i < egl->config_count; i++)
+    {
+        EGLint type, cd, cs, cr, score;
+        funcs->p_eglGetConfigAttrib(egl->display, egl->configs[i], EGL_SURFACE_TYPE, &type);
+        if (!(type & EGL_WINDOW_BIT)) continue;
+
+        /* Score: prefer matching depth/stencil and higher color depth */
+        funcs->p_eglGetConfigAttrib(egl->display, egl->configs[i], EGL_DEPTH_SIZE, &cd);
+        funcs->p_eglGetConfigAttrib(egl->display, egl->configs[i], EGL_STENCIL_SIZE, &cs);
+        funcs->p_eglGetConfigAttrib(egl->display, egl->configs[i], EGL_RED_SIZE, &cr);
+        score = cr; /* prefer higher color depth */
+        if (cd >= depth) score += 100; /* bonus for sufficient depth */
+        if (cs >= stencil) score += 50; /* bonus for sufficient stencil */
+
+        if (score > best_score)
+        {
+            best_score = score;
+            best = egl->configs[i];
+        }
+    }
+
+    if (best)
+    {
+        TRACE("format %d: using window-capable config %p (score %d)\n", format, best, best_score);
+        return best;
+    }
+
+    WARN("No window-capable EGL config found for format %d\n", format);
+    return config;
+}
+
 static void macdrv_drawable_destroy(struct opengl_drawable *base)
 {
     TRACE("%s\n", debugstr_opengl_drawable(base));
@@ -73,7 +119,7 @@ static BOOL macdrv_drawable_swap(struct opengl_drawable *base)
 
 static BOOL macdrv_surface_create(HWND hwnd, int format, struct opengl_drawable **drawable)
 {
-    EGLConfig config = egl_config_for_format(format);
+    EGLConfig config = find_window_config(format);
     struct macdrv_client_surface *client;
     struct opengl_drawable *previous;
     struct macdrv_gl_drawable *gl;

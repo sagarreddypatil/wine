@@ -3,7 +3,12 @@
     "allow": [
       "Bash(arch -x86_64 make install)",
       "WebFetch(domain:gist.github.com)",
-      "WebFetch(domain:gist.githubusercontent.com)"
+      "WebFetch(domain:gist.githubusercontent.com)",
+      "Bash(otool -l ~/wine-custom/lib/wine/x86_64-unix/winemac.so)",
+      "Bash(grep -n \"extension_registry\\\\|struct registry_entry\" /Users/sagar/Documents/wine/dlls/opengl32/*.c /Users/sagar/Documents/wine/dlls/opengl32/*.h)",
+      "Bash(grep -r EGL_PLATFORM_SURFACELESS --include=*.c --include=*.h)",
+      "Bash(gh gist:*)",
+      "Bash(DYLD_LIBRARY_PATH=~/mesa-native/lib arch -x86_64 ~/mesa-native/lib/libEGL.dylib)"
     ]
   }
 }
