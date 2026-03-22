@@ -7,5 +7,7 @@ export MESA_LOADER_DRIVER_OVERRIDE=zink
 export MESA_GL_VERSION_OVERRIDE=4.6
 export MESA_GLSL_VERSION_OVERRIDE=460
 
+# cd ~/Downloads/
+# ~/wine-custom/bin/wine glxgears.x64.exe
 cd ~/Downloads/GLSLTestbed-Release
 ~/wine-custom/bin/wine GLSLTestbed.exe

@@ -3938,6 +3938,18 @@ void macdrv_release_metal_device(macdrv_metal_device d)
 }
 }
 
+void *macdrv_view_get_backing_layer(macdrv_view v)
+{
+    WineContentView* view = (WineContentView*)v;
+    __block CALayer* layer;
+
+    OnMainThread(^{
+        layer = [view layer];
+    });
+
+    return (void*)layer;
+}
+
 macdrv_metal_view macdrv_view_create_metal_view(macdrv_view v, macdrv_metal_device d)
 {
     id<MTLDevice> device = (id<MTLDevice>)d;
