@@ -53,12 +53,7 @@ Instead of running `./test.sh`, ask me (the user) to run it, and paste the outpu
 please. When you run it yourself, you are unable to potentially view/interact with the target
 application and unable to recognize success/failure/hang and properly close the application.
 
-## More info
+## Prior work
 
-FUCK i accidently nuked your previous tmux session i'm very sorry. result of your latest work is in OUTPUT.md
-
-also some /btw's i gave you iirc
-- no need to reconfigure, just rebuild + reinstall is enough
-- SONAME_LIBEGL is confirmed to be set you don't need to worry about that
-
-sorry about that, please continue the work :)
+See `CONTEXT.md` for full implementation context, architecture, key design decisions, and current
+status. Read it before continuing any work.

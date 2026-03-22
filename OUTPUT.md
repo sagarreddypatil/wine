@@ -22,6 +22,15 @@ Shader (res/shaders/CS_SceneGI_Bake_Checkerboard.shader) Compilation Failure!
 012c:err:sync:RtlpWaitForCriticalSection section 00006FFFFFC591A0 "dlls/ntdll/exception.c: vectored_handlers_section" wait timed out in thread 012c, blocked by 0000, retrying (60 sec)
 0130:err:sync:RtlpWaitForCriticalSection section 00006FFFFFC591A0 "dlls/ntdll/exception.c: vectored_handlers_section" wait timed out in thread 0130, blocked by 0000, retrying (60 sec)
 0134:err:sync:RtlpWaitForCriticalSection section 00006FFFFFC591A0 "dlls/ntdll/exception.c: vectored_handlers_section" wait timed out in thread 0134, blocked by 0000, retrying (60 sec)
+0138:err:sync:RtlpWaitForCriticalSection section 00006FFFFFC591A0 "dlls/ntdll/exception.c: vectored_handlers_section" wait timed out in thread 0138, blocked by 0000, retrying (60 sec)
+013c:err:sync:RtlpWaitForCriticalSection section 00006FFFFFC591A0 "dlls/ntdll/exception.c: vectored_handlers_section" wait timed out in thread 013c, blocked by 0000, retrying (60 sec)
+0140:err:sync:RtlpWaitForCriticalSection section 00006FFFFFC591A0 "dlls/ntdll/exception.c: vectored_handlers_section" wait timed out in thread 0140, blocked by 0000, retrying (60 sec)
+0144:err:sync:RtlpWaitForCriticalSection section 00006FFFFFC591A0 "dlls/ntdll/exception.c: vectored_handlers_section" wait timed out in thread 0144, blocked by 0000, retrying (60 sec)
+0148:err:sync:RtlpWaitForCriticalSection section 00006FFFFFC591A0 "dlls/ntdll/exception.c: vectored_handlers_section" wait timed out in thread 0148, blocked by 0000, retrying (60 sec)
+014c:err:sync:RtlpWaitForCriticalSection section 00006FFFFFC591A0 "dlls/ntdll/exception.c: vectored_handlers_section" wait timed out in thread 014c, blocked by 0000, retrying (60 sec)
+0150:err:sync:RtlpWaitForCriticalSection section 00006FFFFFC591A0 "dlls/ntdll/exception.c: vectored_handlers_section" wait timed out in thread 0150, blocked by 0000, retrying (60 sec)
+./test.sh: line 13: 40777 Killed: 9               ~/wine-custom/bin/wine GLSLTestbed.exe
+
 ```
 
 and it's not ctrl-c'able, had to kill
