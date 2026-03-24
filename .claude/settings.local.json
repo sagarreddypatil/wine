@@ -20,7 +20,8 @@
       "Bash(echo \"$f\")",
       "Bash(done)",
       "Bash(otool:*)",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(du -sh /opt/wine-gl46/lib/*/)"
     ]
   }
 }

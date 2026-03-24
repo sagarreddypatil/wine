@@ -1,3 +1,4 @@
+yabai --stop-service
 PREFIX=/opt/wine-gl46
 # export DYLD_INSERT_LIBRARIES=$PREFIX/lib/libgl_interpose.dylib
 export DYLD_LIBRARY_PATH=$PREFIX/lib
@@ -15,3 +16,4 @@ $WINE gl46test.exe
 # $WINE glxgears.x64.exe
 # cd ~/Downloads/GLSLTestbed-Release
 # $WINE GLSLTestbed.exe
+yabai --start-service
